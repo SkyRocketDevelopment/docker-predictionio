@@ -11,8 +11,11 @@ ENV PATH=${PIO_HOME}/bin:$PATH
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ENV HOME /home/pio
 
+
 RUN apt-get update \
-    && apt-get install -y --auto-remove --no-install-recommends curl libgfortran3 python-pip wget openjdk-8-jdk sudo \
+    && apt-get -y software-properties-common \
+    && add-apt-repository ppa:jonathonf/python-3.6 \
+    && apt-get install -y --auto-remove --no-install-recommends curl libgfortran3 python-pip wget openjdk-8-jdk python3.6 python3-pip sudo \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
